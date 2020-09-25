@@ -119,27 +119,65 @@ int main()
         case 7:{
             /*Escriba un programa que pida un número N e imprima en pantalla
              la suma de todos los números entre 0 y N (incluyéndose el mismo).*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese un numero N, entero y se sumaran todos los valores desde o hasta dicho numero n (incluyendolo)";
+            cout << "\n\n --> "; cin >> num_n;
+            while (A != num_n) { // se repite la sumatoria hasta que A comienza en 0 sea igual al numero entregado
+                A++;
+                B += A; // se acumulan los valores en B
+            }
+            cout << "\nLa sumatoria total de 0 hasta "<< num_n << " es de = " << B << "\n\n";
             break;
         }
 
         case 8:{
             /*Escriba un programa que pida un número N e imprima en pantalla su factorial.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese un numero N, se imprimira su factorial";
+            cout << "\n\n --> "; cin >> num_n;
+            if (num_n == 0) cout << "El factorial de 0! es = 1"; // en caso de que sea 0 es un caso especial da 1
+            else {
+                A = num_n; //neceistamos un aculador que inicie con la variable N
+                B = num_n; //requerimos de la varibale anterio a N para comnezar a multiplicar
+                while (B > 1) {
+                    B--;//restamos 1 a la segudilla de N
+                    A = A * B; // acumulamos
+                }
+                cout << "El factorial de " << num_n << "! es = " << A;
+            }
             break;
         }
 
         case 9:{
             /*Escriba un programa que pida un número N e imprima el perímetro y área de un círculo
-             con radio N. Nota: use 3.1416 como una aproximación de pi.*/
-            cout << "Valor sin sentido \n";
+             con radio N. Nota: use 3.1416 como una aproximación de pi.
+
+             P = 2*pi*r
+             A = pi*r^2
+
+            */
+            cout << "Ingresa un valor N, y se imprimira el perimetro y el area de un circulo con radio N\n";
+            cout << "\n\n --> "; cin >> acumulador;
+            if (acumulador == 0) cout << "No hay circulo si su radio es 0\n";
+            else {
+                a = 2 * 3.1416 * acumulador;
+                b = 3.1416 * acumulador * acumulador;
+                cout << "\n El perimetro es igual a  = " << a << "\n\n El area es igual a = " << b << "\n\n";
+            }
             break;
         }
 
         case 10:{
             /*Escriba un programa que pida un número N e imprima en pantalla todos
              los múltiplos de dicho número entre 1 y 100.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingresa un valor N, y se imprimiran todos los multiplos menores de 100 del numero N\n";
+            cout << "\n\n --> "; cin >> a; cout << "\n\n";
+            if (a == 0) cout << "  0\n\n"; // verifica en caso de que N sea cero ya que es un caso especial con solo un multiplo
+            else {
+                do {
+                    A++; // aumenta en 1 la variable A, para su multiplicacion
+                    acumulador = a * A;
+                    if (acumulador < 100) cout << "  " << acumulador << "\n\n"; // en caso de que el resultado sea menor a 100 lo imprime
+                } while (acumulador < 100);
+            }
             break;
         }
 
