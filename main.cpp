@@ -1,5 +1,7 @@
 #include <iostream>
 //#include <math.h>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
@@ -355,16 +357,16 @@ int main()
              hechos con el carácter `+' y el interior debe estar vacío.*/
             cout << "Ingrese un numero entero y se imprimira un cuadrado del longitud inicado con  (+)\n";
             cout << " --> "; cin >> num_n ; cout << "\n\n\t\t";
-            if (num_n == 0 ) cout << "Ingresaste cero no hay grafica";
-            else if (num_n == 1) cout << "+";
+            if (num_n == 0 ) cout << "Ingresaste cero no hay grafica"; //no se imprime nada cero
+            else if (num_n == 1) cout << "+"; // la longitud es unitaria se imprime solo un (+)
             else{
                 A = num_n;
-                while (A != 0){
+                while (A != 0){ //imprimimo la primera fila
                     cout << "+";
                     A--;
                 }
                 B = num_n - 2;
-                while (B != 0){
+                while (B != 0){ // imprimimos dos columbas del tamaño indicado menos 2
                     A = num_n - 2;
                     cout << "\n\t\t+";
                     while (A != 0){
@@ -376,7 +378,7 @@ int main()
                 }
                 cout << "\n\t\t";
                 A = num_n;
-                while (A != 0){
+                while (A != 0){ // imprimimos la ultima fila identica a la primera
                     cout << "+";
                     A--;
                 }
@@ -397,7 +399,16 @@ int main()
              formaría, si sus lados tienen la longitud denida por los números
              ingresados. Tenga en cuenta el caso en que los números ingresados
              no forman un triángulo.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese 3 Valores de lado y se comprobabra que tipo e triangulo es\n\n";
+            cout << "A --> "; cin >> a ; cout << "\n\n";
+            cout << "B --> "; cin >> b ; cout << "\n\n";
+            cout << "C --> "; cin >> acumulador ; cout << "\n\n";
+            if (a + b > acumulador && a + acumulador > b && b + acumulador > a) { //Verificamos que sea un triangulo ya que la suma de dos lados tiene que ser mayor al lado no sumado en todos los casos
+                cout << "Los lados dados SI forman un triangulo \n\n";
+                if (a == b && b == acumulador) cout << "Es un triangulo EQUILATERO\n\n"; // si todos sus lados son iguales
+                else if ( a != b && a != acumulador && b != acumulador) cout << "Es un triangulo ESCALENO\n\n"; // si ningun lado se parece
+                else cout << "Es un triangulo es ISOSCELES\n\n"; //descarte o dos lados iguales
+            }
             break;
         }
 
@@ -434,7 +445,18 @@ int main()
             es mayor o menor que A, esto se repetirá hasta que el usuario adivine el número,
             en ese momento el programa le dirá el número de intentos que tardo el usuario en
             adivinar el número.*/
-            cout << "Valor sin sentido \n";
+            srand(time(NULL));
+            A = rand()%100;
+            cout << "Se ha elegido un numero al azar entre (0 y 100), ingrese valores hasta encontrarlo\n\n";
+            B = 101;
+            num_n = 0;
+            while (A != B) {
+                num_n++;
+                cout << "--> "; cin >> B ; cout << "\n\n\n\n\n\n\n\n";
+                if (B > A) cout << "El numero ingresado es MAYOR al que estas buscando\n\n";
+                else if (B < A) cout << "El numero ingresado es MENOR al que estas buscando\n\n";
+            }
+            cout << "FELICITACIONES encontraste el numero = " << B << "\n\n Tardaste " << num_n << " intentos";
             break;
         }
 
