@@ -1,10 +1,11 @@
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
 char cont = 0;
-int num_n = 0;
-float A=0.0 , B=0.0;
+int num_n = 0, A = 0, B = 0;
+float a=0.0 , b=0.0;
 
 int main()
 {
@@ -13,7 +14,7 @@ int main()
     cout << "--> "; cin >> cont;cout << "\n\n";
 
     if (cont == char (49)){
-        cout << "Que ejercicio desea realizar\n\n --> ";cin >> num_n;
+        cout << "Que ejercicio desea realizar\n\n --> ";cin >> num_n;cout << "\n\n";
         switch (num_n) {
         case 1:{
             /* Escriba un programa que pida dos números A y B e imprima en pantalla el residuo
@@ -21,11 +22,12 @@ int main()
             cout << "\n Ingrese dos valores A y B y el programa imprimira el residuo de \n la divicion de A sobre B\n\n";
             cout << " A --> ";cin >> A;cout << "\n\n B --> ";cin >> B;
             if (B == 0){
-                cout << "\n\n La operacion no se puede realizar divicion por 0";
+                cout << "\n\n La operacion no se puede realizar divicion por 0\n\n";
             }
             else{
-
-                cout << "El residuo de la divion (" << A << " / " << B << ") es = " << A << endl << endl;
+                //Cuando quiero averiguar el modulo de dos float,se puede usar la libreria <math.h> con la funcion fmod (No enocntre otra forma solo con le operador modulo [%])
+                num_n = A % B;
+                cout << "El residuo de la divion (" << A << " / " << B << ") es = " << num_n << endl << endl;
             }
             break;
         }
@@ -33,14 +35,19 @@ int main()
         case 2:{
             /*Escriba un programa que pida un número N e imprima
               en pantalla si es par o impar.*/
-            cout << "Que haces \n ";
+            cout << "\nIngrese un numero para averiguar si este es par o impar\n\n"; cin >> num_n;
+            if (num_n % 2 == 0) cout << "\n\n" << num_n << "  es PAR\n\n";
+            else cout << "\n\n" << num_n << "  es IMPAR\n\n";
             break;
         }
 
         case 3:{
             /*Escriba un programa que pida dos números A y B e imprima
              en pantalla el mayor.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese dos numeros A y B, para averiguar cual de los dos es el mayor\n";
+            cout << "\nA --> "; cin >> a; cout << "\nB --> "; cin >> b;cout << "\n\n";
+            if (a > b) cout << a << " Es mayor que " << b << "\n\n";
+            else cout << b << " Es mayor que " << a << "\n\n";
             break;
         }
 
