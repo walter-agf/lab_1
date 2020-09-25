@@ -1,11 +1,12 @@
 #include <iostream>
-#include <math.h>
+//#include <math.h>
 
 using namespace std;
 
 char cont = 0;
 int num_n = 0, A = 0, B = 0;
-float a=0.0 , b=0.0;
+float a=0.0 , b=0.0, acumulador = 0.0;
+bool ava = true;
 
 int main()
 {
@@ -21,12 +22,13 @@ int main()
              de la división A/B.*/
             cout << "\n Ingrese dos valores A y B y el programa imprimira el residuo de \n la divicion de A sobre B\n\n";
             cout << " A --> ";cin >> A;cout << "\n\n B --> ";cin >> B;
-            if (B == 0){
+            if (B == 0){ // divicion por 0 no se puede realizar
                 cout << "\n\n La operacion no se puede realizar divicion por 0\n\n";
             }
             else{
                 //Cuando quiero averiguar el modulo de dos float,se puede usar la libreria <math.h> con la funcion fmod (No enocntre otra forma solo con le operador modulo [%])
-                num_n = A % B;
+                //c = fmod(a,b);
+                num_n = A % B;  //averigua el modulo entre dos variables enteras
                 cout << "El residuo de la divion (" << A << " / " << B << ") es = " << num_n << endl << endl;
             }
             break;
@@ -36,8 +38,11 @@ int main()
             /*Escriba un programa que pida un número N e imprima
               en pantalla si es par o impar.*/
             cout << "\nIngrese un numero para averiguar si este es par o impar\n\n"; cin >> num_n;
-            if (num_n % 2 == 0) cout << "\n\n" << num_n << "  es PAR\n\n";
-            else cout << "\n\n" << num_n << "  es IMPAR\n\n";
+            if (num_n == 0) cout << "Cero no es ni par ni impar"; //en caso de que el numuero acordado sea 0
+            else {
+                if (num_n % 2 == 0) cout << "\n\n" << num_n << "  es PAR\n\n"; // si la dividir en dos el numero que tiene que ser entero deja un residuo este es impar
+                else cout << "\n\n" << num_n << "  es IMPAR\n\n";
+            }
             break;
         }
 
@@ -46,29 +51,68 @@ int main()
              en pantalla el mayor.*/
             cout << "Ingrese dos numeros A y B, para averiguar cual de los dos es el mayor\n";
             cout << "\nA --> "; cin >> a; cout << "\nB --> "; cin >> b;cout << "\n\n";
-            if (a > b) cout << a << " Es mayor que " << b << "\n\n";
-            else cout << b << " Es mayor que " << a << "\n\n";
+            if (a == b) cout << "Los numeros son iguales"; // si son iguales no hay mayor
+            else {
+                if (a > b) cout << a << " Es mayor que " << b << "\n\n"; // se pregunta si a es mayor ha b
+                else cout << b << " Es mayor que " << a << "\n\n";
+            }
             break;
         }
 
         case 4:{
             /*Escriba un programa que pida dos números A y B e imprima
              en pantalla el menor.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese dos numeros A y B, para averiguar cual de los dos es el menor\n";
+            cout << "\nA --> "; cin >> a; cout << "\nB --> "; cin >> b;cout << "\n\n";
+            if (a == b) cout << "Ambos numeros son iguales"; // se certera de que no sean iguales los numeros para que alla un menor
+            else {
+                if (a < b) cout << a << " Es menor que " << b << "\n\n"; // averigua si a es menor ha b
+                else cout << b << " Es menor que " << a << "\n\n";
+            }
             break;
         }
 
         case 5:{
             /*Escriba un programa que pida dos números A y B e imprima
              en pantalla la división A/B con redondeo.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese dos numeros A y B, se divide A/B y se entrega el resultado con redondeo\n";
+            cout << "\nA --> "; cin >> a; cout << "\nB --> "; cin >> b;cout << "\n\n";
+            if (b == 0) cout << "La opeacion no se puede realizar, divicion por 0"; // una divicion por cero no se puede realizar
+            else {
+                //a = a / b;
+                //printf("%.0f\n",a);
+                num_n = a / b; // añadimos a una variable entera el resultado de la divicion por loq ue la parte decimal (si la hay ) se pierde
+                if ((a/b)-num_n >= 0.5) num_n++; // queremos saber si dicha parte desima es igual o supera a 0.5 para umetar en uno el redondeo
+                cout << "\n\n El resultado redondeado es = " << num_n;
+            }
             break;
         }
 
         case 6:{
             /*Escriba un programa que pida dos números A y B e imprima en pantalla
              la potencia A^B, sin hacer uso de librerías matemáticas.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese dos numeros A y B, y se realizara la potencia A^B\n";
+            cout << "\nA --> "; cin >> a; cout << "\nB --> "; cin >> b;cout << "\n\n";
+            if (b == 0){ // averigua si se eleva a cero ya que es caso especial
+                if (a == 0) cout <<"La operacion no se puede realizar 0^0\n\n"; // no hay ningun numero que multiplicado o veces de 0
+                else cout << "El resultado de " << a << "^" << b << " es = 1\n\n"; // todo numero elevado a la 0 es igual a 1
+            }
+            else if (a == 0) cout << "El resultado de " << a << "^" << b << " es = 0\n\n"; // el cero elevado a cualqueir numero es 0
+            else {
+                if (b < 0) { // averigua si b es negativo
+                    b *= -1; // en caso de serlo lo covierte en positivo
+                    ava = false; // un recordatorio
+                }
+                acumulador = a;
+                A = b;
+                b = (int)b; // convierte ha b en entero para no tener problemas con la elevacion
+                while (b > 1) { // repite el procemieto el numero de veces de b
+                    acumulador = acumulador * a; // la variable se va acumulado
+                    b -= 1; // resta b para no er ciclo infinito
+                }
+                if (ava == true) cout << "El resultado de " << a << "^" << A << " es = " << acumulador << "\n\n"; // si b era positiva imprime el acumulador
+                else cout << "El resultado de " << a << "^" << A << " es = " << 1/acumulador << "\n\n"; //si b era negativa imprimer 1/acumulador
+            }
             break;
         }
 
@@ -450,6 +494,7 @@ int main()
         cout << "Valor fuera del rango\n\n";
     }
 
+    cout << "\n\n";
     system ("pause");
     return 0;
 }
