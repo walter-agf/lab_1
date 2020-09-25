@@ -355,16 +355,16 @@ int main()
              hechos con el carácter `+' y el interior debe estar vacío.*/
             cout << "Ingrese un numero entero y se imprimira un cuadrado del longitud inicado con  (+)\n";
             cout << " --> "; cin >> num_n ; cout << "\n\n\t\t";
-            if (num_n == 0 ) cout << "Ingresaste cero no hay grafica";
-            else if (num_n == 1) cout << "+";
+            if (num_n == 0 ) cout << "Ingresaste cero no hay grafica"; //no se imprime nada cero
+            else if (num_n == 1) cout << "+"; // la longitud es unitaria se imprime solo un (+)
             else{
                 A = num_n;
-                while (A != 0){
+                while (A != 0){ //imprimimo la primera fila
                     cout << "+";
                     A--;
                 }
                 B = num_n - 2;
-                while (B != 0){
+                while (B != 0){ // imprimimos dos columbas del tamaño indiado
                     A = num_n - 2;
                     cout << "\n\t\t+";
                     while (A != 0){
