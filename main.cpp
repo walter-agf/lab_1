@@ -424,8 +424,23 @@ int main()
             /*Escriba un programa que encuentre el valor aproximado de pi
              en base a la siguiente suma innita:
 
+             pi = 4 * [ 1 - (1/3) + (1/5) - (1/7) + (1/9)...]
+
              El usuario debe ingresar el número de elementos usados en la aproximación.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese la cantidad de veces que quiera aplicar la ecuacion para aproximar pi \n\n";
+            cout << "\t\t pi = 4 * [ 1 - (1/3) + (1/5) - (1/7) + (1/9)...]";
+            cout << "\n\n --> "; cin >> A ; cout << "\n\n";
+            if (A == 1) cout << "El resultado para pi es = 4";// si es 1 solo se multiplica 1 x 4
+            else {
+                a = 1;
+                for (b = 3;A != 1; b+= 2){// definimos un for que comienze en un float igual a 3 y vaya aumentado en 2 hasta que el valor ingresado por e ussuario sea igual a 1
+                    if (A % 2 == 0) a = a + (1/b); // en caso de que se teng que sumar por ser par valor e encuentro
+                    else a = a - (1/b);// en caso de que se tenga que restar por ser impar valor de encuentro
+                    A--; //se disminuye la variable
+                }
+                a = a * 4;// se multiplica por 4
+            }
+            cout << "El resultado para pi es = "<< a;
             break;
         }
 
@@ -445,15 +460,15 @@ int main()
             es mayor o menor que A, esto se repetirá hasta que el usuario adivine el número,
             en ese momento el programa le dirá el número de intentos que tardo el usuario en
             adivinar el número.*/
-            srand(time(NULL));
-            A = rand()%100;
+            srand(time(NULL));//definimos un cambio de entorno para encontrar la variable
+            A = rand()%100; // se encuentra el numero aleatorio
             cout << "Se ha elegido un numero al azar entre (0 y 100), ingrese valores hasta encontrarlo\n\n";
-            B = 101;
+            B = 101; // por lo que b inicia el 0 se cambia para un valor fuera del rango
             num_n = 0;
             while (A != B) {
-                num_n++;
+                num_n++;//se crea el contador
                 cout << "--> "; cin >> B ; cout << "\n\n\n\n\n\n\n\n";
-                if (B > A) cout << "El numero ingresado es MAYOR al que estas buscando\n\n";
+                if (B > A) cout << "El numero ingresado es MAYOR al que estas buscando\n\n"; //ayudas para el usuario
                 else if (B < A) cout << "El numero ingresado es MENOR al que estas buscando\n\n";
             }
             cout << "FELICITACIONES encontraste el numero = " << B << "\n\n Tardaste " << num_n << " intentos";
