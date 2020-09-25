@@ -241,8 +241,8 @@ int main()
              números ingresados.*/
             cout << "Ingrese cuantos numeros quiera, y cuando ingrese 0 se entregara la suma de los numeros ingresados\n";
             do {
-                cout << "\n\n --> "; cin >> a; cout << "\n\n";
-                b = b + a;
+                cout << "\n\n --> "; cin >> a; cout << "\n\n"; // se ingresan los numeros las veces que se quiera
+                b = b + a; // realiza la sumatoria
             } while ( a != 0);
             cout << "La sumatoria es igual a = " << b;
             break;
@@ -252,7 +252,14 @@ int main()
             /*Escriba un programa que pida constantemente números hasta que se ingrese
              el número cero e imprima en pantalla el promedio de los números ingresados
              (excluyendo el cero).*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese cuantos numeros quiera, y cuando ingrese 0 se entregara el promedio de los numeros ingresados\n";
+            do {
+                cout << "\n\n --> "; cin >> a; cout << "\n\n";
+                A++; // el contador va aumentado
+                b = b + a;
+            } while ( a != 0);
+            b = b / (A - 1); // saca el promedio, primero la resta y despues la divicion
+            cout << "La promedio es igual a = " << b;
             break;
         }
 
@@ -260,28 +267,53 @@ int main()
             /*Escriba un programa que pida constantemente números hasta que se
              ingrese el número cero e imprima en pantalla el mayor de todos los
              números ingresados.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese cuantos numeros quiera, y cuando ingrese 0 se entregara el mayor de todos los numeros\n";
+            do {
+                cout << "\n\n --> "; cin >> a; cout << "\n\n";
+                if (a > b) b = a; // si el numero ingresado es mayor al previamente colocado se intercambia
+            } while ( a != 0);
+            cout << "\n El numero mayor de todos los ingresados es = " << b;
             break;
         }
 
         case 18:{
             /*Escriba un programa que pida un número N e imprima
-             si es o no un cuadrado perfecto.*/
-            cout << "Valor sin sentido \n";
+             si es o no un cuadrado perfecto. (Es cuadrado perfecto caunto la raiz del numero es un numero natural entero)*/
+            cout << "Ingrese un numero N y se averigua si es un cuadrado perfecto (La raiz y el indice del numero debe ser el mismo numero natural, entero) \n";
+            cout << "\n\n --> "; cin >> A; cout << "\n\n";
+            while (b < A) { // verifica que la potencia no se pase del valor al que se saca raiz
+                B++; // aumenta los valores de poencia
+                b = B*B;
+            }
+            if (b == A) cout << "El numero " << A << " SI es un cuadrador perfeto";
+            else cout << "El numero " << A << " NO es un cuadrador perfeto";
             break;
         }
 
         case 19:{
             /*Escriba un programa que pida un número N e imprima si es
             o no un número primo.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese un numero N y se averigua si es o no un numero primo (que solo se puede dividir por si mismo y por 1)\n";
+            cout << "\n\n --> "; cin >> A; cout << "\n\n";
+            if (A == 2 || A == 3 || A == 5 || A  == 7) cout << "El numero SI es primo"; // el dos es el unico numero par primo
+            else if (A % 2 == 0 || A % 3 == 0 || A % 5 == 0 || A % 7 == 0) cout << "El numero NO es primo"; // condicion para que NO sea primo
+            else cout << "El numero SI es primo"; //condicon para que sea primo
             break;
         }
 
         case 20:{
             /*Escriba un programa que pida un número N e imprima si es
              o no un palíndromo (igual de derecha a izquierda que de izquierda a derecha).*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese un numero N y averigue si es palindromo, si se escirbe igual de derecha a izquiera que de izquierda a derecha\n";
+            cout << " --> "; cin >> num_n; cout << "\n\n";
+            A = num_n;
+            while (num_n != 0){
+                B *= 10; // multiplica para aumetar una unidad los valores caluclados
+                B = B + (num_n%10); // agrega al acumuladro el ultimo valor de la variable original
+                num_n = num_n / 10; // le quita el ultimo valor a la variable original
+            }
+            if (B == A) cout << "El numero SI es palindromo";
+            else cout << "El numero NO es palindromo";
             break;
         }
 
