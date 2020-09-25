@@ -184,28 +184,54 @@ int main()
         case 11:{
             /*Escriba un programa que pida un número N e imprima en pantalla
              su tabla de multiplicar hasta 10xN.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingresa un valor N, y se imprimiran su tabla de multiplicar hasta 10\n";
+            cout << "\n\n --> "; cin >> a; cout << "\n\n";
+            for (A=0;A<=10;A++){//realiza un for que comienze con A = 0, que tabaje miestras A <= 10 y vaya aumentado A en 1
+                cout << a << " x " << A << " = " << a*A << "\n";
+            }
             break;
         }
 
         case 12:{
             /*Escriba un programa que pida un número N e imprima todas
              las potencias desde N^1 hasta N^5*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingresa un valor N, y que imprima todas las potncias desde N^1 hasta N^5";
+            cout << "\n\n --> "; cin >> a; cout << "\n\n";
+            for (A=1;A<=5;A++){ //el for inica con A = 1 y va miestra A sea igual o menor a 5 con aumento en 1
+                B = A; // necesitamos otra variable entera para hacer la elevacion
+                b = a; // b funciona como acumulador para la potencia
+                while (B > 1) {
+                    b = b * a;
+                    B--; //disminuye el valor de B
+                }
+                cout << a << "^" << A << " = " << b << "\n";
+            }
             break;
         }
 
         case 13:{
             /*Escriba un programa que pida un número N e imprima
              todos los divisores de N.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingresa un valor N, y que imprima todos los divisores enteros de N";
+            cout << "\n\n --> "; cin >> A; cout << "\n\n";
+            if (A == 0 ) cout << "Cero no tiene divisores";
+            else {
+                B = 1;
+                while (B <= A){ // solo pueden ser divisores cantidades menores
+                    if (A % B == 0) cout << "Un divisor de " << A << " es = " << B << "\n";  // si el residuo es cero es divisor
+                    B ++;
+                }
+            }
             break;
         }
 
         case 14:{
             /*Escriba un programa que imprima dos columnas paralelas,
              una con los números del 1 al 50 y otra con los números del 50 al 1.*/
-            cout << "Valor sin sentido \n";
+            while (A < 50){
+                A++;
+                cout << "   " << A << "       " << 51 - A << endl;
+            }
             break;
         }
 
@@ -213,7 +239,12 @@ int main()
             /*Escriba un programa que pida constantemente números hasta que se
              ingrese el número cero e imprima en pantalla la suma de todos los
              números ingresados.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese cuantos numeros quiera, y cuando ingrese 0 se entregara la suma de los numeros ingresados\n";
+            do {
+                cout << "\n\n --> "; cin >> a; cout << "\n\n";
+                b = b + a;
+            } while ( a != 0);
+            cout << "La sumatoria es igual a = " << b;
             break;
         }
 
