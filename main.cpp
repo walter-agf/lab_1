@@ -322,7 +322,19 @@ int main()
         case 21:{
             /*Escriba un programa que pida un carácter C, si es una letra la
              debe convertir de mayúscula a minúscula y viceversa e imprimirla.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingresar solo un caracter\n(Si es una letra, hay un cambio de minuscula a mayuscula y viceversa): \n\n";
+            cout << " --> ";cin >> cont; cout << "\n\n"; // se ingresa un valor en un char cualquiera
+            num_n=cont;
+            //cout << num_n;
+            if (num_n>64 && num_n<91){
+                cont=num_n+32; // si es mayuscula lo convierte en minuscula cambaido el valor char de ASCII
+                cout << "Su caracter en minuscula es = " << cont << "\n\n";
+            }
+            else if (num_n>96 && num_n<123){
+                cont=num_n-32; // si es minuscula la comvierte en Mayuscula cambiandole el valor ASCII
+                cout << "Su caracter en mayuscula: " << cont << "\n\n";
+            }
+            else cout << "Su caracter: " << cont << "\n\n";
             break;
         }
 
@@ -347,7 +359,22 @@ int main()
         case 23:{
             /*Escriba un programa que pida dos números A y B e imprima en pantalla el mínimo
              común múltiplo entre los dos.*/
-            cout << "Valor sin sentido \n";
+            cout << "Averiguar minomo comun multiplo \n";
+            cout << "Escribir el primer numero: \n\n --> "; cin >> A;
+            cout << "\nEscribir el segundo numero: \n\n --> "; cin >> B;
+            if (B>A) { //si el segunod numero es mayor cambiamos el orden de las variables
+                num_n = A;
+                A = B;
+                B = num_n;
+            }
+            num_n=A; // que sirva de comprbante de aumento con la variable mayor
+            while(true){
+                if (num_n%A==0 && num_n%B==0){//si es multiplo de ls dos
+                    cout << "\n\nEl MCM entre " << A << " y " << B <<" es: " << num_n << "\n\n";
+                    break;
+                }
+                num_n++;//aumenta en uno las coparativas
+            }
             break;
         }
 
@@ -389,7 +416,10 @@ int main()
         case 25:{
             /*Escriba un programa que pida un número N e imprima en
              pantalla la cantidad de dígitos de N.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese un numero: ";
+            cin >> A;
+            for(B=0;A!=0;A=A/10) B+=1; //un for que itera la canida de veces en digitos que tenga A
+            cout << "\nEl numero de digitos es: " << B << "\n\n";
             break;
         }
 
@@ -416,7 +446,17 @@ int main()
             /*Escriba un programa que actúe como una calculadora con
              operaciones de suma, resta, multiplicación y división,
              el usuario debe ingresar los operandos y la operación a realizar.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingresar primer numero:\n\n --> ";cin >> a;
+            cout << "Ingresar operador ( + , - , * , / ):\n\n --> ";cin >> cont; //ingresa el operador entre cuatro obciones posibles
+            cout << "Ingresar Segundo numero:\n\n --> ";cin >> b;
+            if (cont==42) cout << "Resultado: " << a*b << endl;
+            else if (cont==43) cout << "Resultado: " << a+b << endl;
+            else if (cont==45) cout << "Resultado: " << a-b << endl;
+            else if (cont==47) {
+                if (b == 0) cout << "Divicion en cero"; // en caso de que la divicion no se pueda realizar
+                else cout << "Resultado: " << a/b << endl;
+            }
+            else cout << "Debe de poner alguno de estos operadores (* , / , + , -): " << endl; //que se ingrese un operador invalido
             break;
         }
 
@@ -450,7 +490,23 @@ int main()
             el usuario usará los símbolos `>', `<' y `=' para indicarle al programa si B es mayor, menor o igual
             que A. El programa imprimira un nuevo número B, con base en simbolo ingresado por el usuario, y
             repetira el proceso hasta acertar el número seleccionado por usuario.*/
-            cout << "Valor sin sentido \n";
+            B=100;
+            num_n=50;
+            cout << "Ponga (<) si es menor, (>) si es mayor y (=) si es el numero que penso:\n\n";
+            while(cont!=61){
+                cout << " El numero que esta pensando es = " << num_n ;
+                cout << "\n\n --> ";cin >> cont;
+                if (cont==60){
+                    B=num_n;
+                    num_n=num_n-((B-A)/2);
+                }
+                else if (cont==62){
+                    A=num_n;
+                    num_n=((B-A)/2)+num_n;
+                }
+                else if (cont==61) cout << "Gracias por jugar" << endl;
+                else cout << "Debe de colocar ( < , > , = )" << endl;
+            }
             break;
         }
 
