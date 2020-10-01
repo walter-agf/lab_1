@@ -6,7 +6,7 @@
 using namespace std;
 
 char cont = 0;
-int num_n = 0, A = 0, B = 0;
+int num_n = 0, A = 0, B = 0, ente = 0, pos = 0, sum = 0, impar=0;
 float a=0.0 , b=0.0, acumulador = 0.0;
 bool ava = true;
 
@@ -703,7 +703,7 @@ int main()
         case 11:{
             /*Escriba un programa que reciba un número y calcule el mínimo común
             múltiplo de todos los números enteros entre 1 y el número ingresado.*/
-            cout << "Ingrese un numero\n\n --> ";
+            cout << "Ingrese un numero N y calcular el miimo comun multiplo de todos los numeros enteros entre 1 y el numero ingresado\n\n --> ";
             cin >> num_n;cout << "\n\n";
             a=0;
             A=num_n;
@@ -731,13 +731,12 @@ int main()
             cout << "Ingrese un numero y se calcula la suma de todos los primos menores al numero\n\n --> ";
             cin >> num_n; cout << "\n\n";
             A=2;
-            a=0;
             if (num_n<=1) cout << "Poner un numero mayor a 1" << endl;
             else{
                 for(;A<num_n;A++){
                     for (B=2;B<=A;B++){
                         if (A==B){
-                            a+=B;
+                            a+=B; //aumenta el acumulador
                         }
                         else if (A%B==0) break;
 
@@ -774,7 +773,48 @@ int main()
             Nota: la salida del programa debe ser:
             En una espiral de 5x5, la suma es: 101.
             Otra nota: se le dará una bonicación si imprime la espiral.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese un numero N impar para realizar una espieral desde 1 con aumento a la izquierda en sentido horario\n";
+            cout << "y de dimenciones NxN\n\n --> "; cin >> num_n; cout << "\n\n";
+            int vec[num_n];
+            B = (num_n*num_n) - num_n + 1;
+            vec[A] = B;
+            while (A < num_n){
+                //cout << B << "\n";
+                cout << vec[A] << " ";
+                A++;
+                B += 1;
+                vec[A] = B;
+            }
+            impar = num_n;
+            for (B = num_n; B != 0; B--){
+                cout << "\n";
+                A = 0;
+                ente ++;
+                for (pos = ente; pos != 0; pos--){
+                    vec[A] -= 1;
+                    if (vec[A] < 10) cout << vec[A] << "  ";
+                    else cout << vec[A] << " ";
+                    A ++;
+                }
+                pos = num_n - ente - (ente - 1);
+                //cout << "\n\n" << pos << "\n\n";
+                impar -= 2;
+                sum = impar * impar - impar + 1;
+                for (;pos > 0; pos--){
+                    if (sum < 10) cout << sum << "  ";
+                    else cout << sum << " ";
+                    vec[A] = sum;
+                    sum ++;
+                    A++;
+                }
+                pos = ente - 1;
+                for (; pos != 0; pos--){
+                    vec[A] += 1;
+                    if (vec[A] < 10) cout << vec[A] << "  ";
+                    else cout << vec[A] << " ";
+                    A ++;
+                }
+            }
             break;
         }
 
@@ -809,7 +849,17 @@ int main()
             que reciba un número k y calcule cual es el primer número triangular que tiene más de k divisores.
             Tip: el enésimo número triangular se puede representar como n*(n+1)/2.
             Nota: la salida del programa debe ser: El numero es: 28 que tiene 6 divisores.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese el numero K de divisores para un numero triangular con diviiores 1 mayor a K\n\n --> ";
+            cin >> num_n; cout << "\n\n";
+            for(;num_n>=A;){  // miestras los diviosres encontrados sean menores o iguales al numero K
+                A = 0; // o divisores
+                a++; // va aumentado el numero triagunlar posicional a calcular
+                B = a*(a+1)/2; //calculo del numero triangular
+                //cout << B << "  ";
+                for (ente = 1; B >= ente ; ente++ ) if (B%ente == 0 ) A++; //averigua cociente
+                //cout << A << "  \n";
+            }
+            cout << "El numero es: " << B << " que tiene " << A << " divisores" << endl;
             break;
         }
 
