@@ -540,12 +540,21 @@ int main()
     }
    else if (cont == char (50) ){
 
-        cout << "Que problema desea realizar\n\n --> ";cin >> num_n;
+        cout << "Que problema desea realizar\n\n --> ";cin >> num_n;cout << "\n\n";
         switch (num_n) {
         case 1:{
             /*Escriba un programa que identique si un carácter ingresado es una vocal,
-            una consonante o ninguna de las 2 e imprima un mensaje según el caso.*/
-            cout << "Como estas \n";
+            una consonante o ninguna de las dos e imprima un mensaje según el caso.*/
+            //cout << char(-92) << "\n";
+            cout << "Ingrese una letra: \n\n";
+            cout << "--> "; cin >> cont; cout << "\n\n";
+            if ((cont>64 && cont<91 )|| (cont>96 && cont<123)||cont==-91 || cont==-92){ //averigua si esta dentro del ango de las letras -  Tambien pregunta si es una ñ qu neesita un comando especial diferente
+                if (cont==65 || cont==69 || cont==73 || cont==79 || cont==85 || cont==97 || cont==101 || cont==105 || cont==111 || cont==117){ //averigua si es una voval tanto mayuscula como minuscula
+                    cout << cont << " es una VOCAL." << endl;
+                }
+                else cout << cont << " es una CONSONANTE" << endl;
+            }
+            else cout << "No es una letra" << endl; //En caso de que no sea una letra
             break;
         }
 
@@ -564,7 +573,27 @@ int main()
             /*Escriba un programa que debe leer un mes y un día de dicho mes para luego decir
             si esa combinación de mes y día son válidos. El caso más especial es el 29 de febrero,
             en dicho caso imprimir posiblemente año bisiesto.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingresar el dia: \n\n --> ";
+            cin >> A; cout << "\n\n";
+            cout << "Ingresa el mes: \n\n --> ";
+            cin >> B; cout << "\n\n";
+            if (B < 0 || B > 12 ) cout << B << " Es un mes INVALIDO" << endl; //se asegura que el este dentro del rango
+            else if (A < 0 || A > 31 ) cout << "Es una dia INVALIDO" << endl; // se asegura que el dia este dentro del rango de 31
+            else {
+                cout << A << "/" << B << "\n\n"; // imprime la fecha a comprobar
+                if (B == 2) { // si se refiere a febrero
+                    if (A > 28) { // si es mayor a 28 solo es valida en un caso
+                        if (A == 29) cout << "Fecha VALIDA en año Bisiesto\n\n"; //cuando es 29
+                        else cout << "Fecha INVALIDA \n\n";
+                    }
+                    else cout << "Fecha Valida\n\n"; // en caso de estar dentro de los rango es valida
+                }
+                else if (B == 4 || B == 6 || B == 9 || B == 11) {// si pertenece a un me de 30 dias que son mas pocos que los de 31
+                    if (A < 31) cout << "Fecha VALIDA"; // si tienen menos de 31 osea haste 30 dias es valida
+                    else cout << "Fecha INVALIDA"; // caso contrario
+                }
+                else cout << "Fecha VALIDA"; //con todas las condicionales anteriores ya podemos decir que es fecha valida
+            }
             break;
         }
 
@@ -592,7 +621,23 @@ int main()
 
             El tamaño del patrón estará determinado un número entero impar que
             ingrese el usuario. En el ejemplo mostrado, el tamaño de la gura es 7.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingresar un numero impar para imprimir un rombo con  (*): \n\n --> ";
+            cin >> num_n;cout << "\n\n";
+            if (num_n%2==0) cout << "Debe de ingresar un numero impar" << endl;
+            else{
+                num_n=(num_n/2)+1;
+                for(A=1;num_n>=A;A++){
+                    for(a=num_n-1;a>=A;a--) cout << " ";
+                    for(B=1;2*A-1>=B;B++) cout << "*";
+                    cout << endl;
+                }
+                for(A=1;num_n-1>=A;A++){
+                    for(a=1;a<=A;a++) cout << " ";
+                    for(B=(num_n*2)-3;A*2-1<=B;B--) cout << "*";
+                    cout << endl;
+                }
+             //cout << "Terminado";
+            }
             break;
         }
 
@@ -610,7 +655,19 @@ int main()
             Ej: 1, 1, 2, 3, 5, 8, ....
             Escriba un programa que reciba un número n y halle la suma de todos los números pares
             en la serie de Fibonacci menores a n.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese un numero, para avariguar todos los numeos de Fibonacci hasta ese numero y su sumatoria:\n\n -->";
+            cin >> num_n;cout << "\n\n";
+            A=0;
+            B=1;
+            a=0;
+            while (B<=num_n){
+                b=A+B;
+                if (B%2==0) a+=B;
+                cout << " , "<< B;
+                A=B;
+                B=b;
+            }
+            cout << "\n\nLa suma de los numeros pares de la serie de fubonacci menores a " << num_n << "\n\nEs = " << a << endl;
             break;
         }
 
@@ -625,7 +682,15 @@ int main()
         case 9:{
             /*Escriba un programa que pida un número entero N e imprima el resultado
             de la suma de todos sus dígitos elevados a sí mismos.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese un numero N, y el programa imprime la suma de todos sus digitos elevados a si mismos:\n(Si el digito es cero se tomo como cero elevado a cero igual a 1, por teoria de conjunto segun acuerdo)\n\n --> ";
+            cin >> A; cout << "\n\n";
+            for(;A!=0;A/=10){
+                num_n = 1; // se inicia el acumulador en 1 que es la primera variable al multiplicar
+                B=A%10; // averigua el ultimo digio del numero
+                for (;B!=0;B-=1) num_n *= A%10; // se saca la potencia
+                a += num_n; // se añade al acumulador
+            }
+            cout << "Resultado: " << a << endl;
             break;
         }
 
@@ -638,7 +703,19 @@ int main()
         case 11:{
             /*Escriba un programa que reciba un número y calcule el mínimo común
             múltiplo de todos los números enteros entre 1 y el número ingresado.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese un numero\n\n --> ";
+            cin >> num_n;cout << "\n\n";
+            a=0;
+            A=num_n;
+            while(a==0){
+                A+=1;
+                B=1;
+                for (;B<=num_n;B++){
+                    if (A%B!=0) break;
+                    else if (B==num_n) a=1;
+                }
+            }
+            cout << "\nEl MCM es: " << A << endl;
             break;
         }
 
@@ -651,7 +728,23 @@ int main()
         case 13:{
             /*Escriba un programa que reciba un número y calcule la suma
             de todos los primos menores que el número ingresado.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese un numero y se calcula la suma de todos los primos menores al numero\n\n --> ";
+            cin >> num_n; cout << "\n\n";
+            A=2;
+            a=0;
+            if (num_n<=1) cout << "Poner un numero mayor a 1" << endl;
+            else{
+                for(;A<num_n;A++){
+                    for (B=2;B<=A;B++){
+                        if (A==B){
+                            a+=B;
+                        }
+                        else if (A%B==0) break;
+
+                    }
+                }
+            }
+            cout << "La suma de los numeros primos menores a " << num_n << " es: " << a << endl;
             break;
         }
 
@@ -720,7 +813,12 @@ int main()
             break;
         }
 
-    }
+        default:{
+            cout << "\n\nValor fuera de rango \n\n";
+            break;
+        }
+
+        }
     }
    else {
         cout << "Valor fuera del rango\n\n";
