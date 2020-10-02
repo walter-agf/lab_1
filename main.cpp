@@ -778,7 +778,27 @@ int main()
 
         case 10:{
             /*Escriba un programa que reciba un número n e imprima el enésimo número primo.*/
-            cout << "Valor sin sentido \n";
+            cout << "Programa que reciba un numero N e imprima el enesimo numero primo.\n\n N --> ";
+            cin >> num_n; cout << "\n\n";
+            A = 2;
+            for (;B != num_n;){ // se ejecuta la cantidad de numero primos encotnrados
+                ente = B;
+                while (B == ente){
+                    if (A == 2 || A == 3 || A == 5 || A == 7 || A == 11 || A == 13) { // realiza las primeras 5 operaciones varias en nuemro primos
+                        B++; // aumentan en uno la cantidad de numeros primos encontrada
+                        cout << "\n\t" << A; // en caso de encontrar un primo lo imprime
+                        A ++;
+                    }
+                    else { // calcula los numeros primos en base a su modulo
+                        A++;
+                        if (A%2 != 0 && A%3 != 0 && A%5 != 0 && A%7 != 0 && A%11 != 0 && A%13 != 0) {
+                            B++; // aumenta en uno la cantidad de numeros primos encontrada
+                            cout << "\n\t" << A;
+                        }
+                    }
+                }
+            }
+            cout << "\n\n El " << num_n << " Numero primo es = " << A; //imprime el ultimo numero primo encontrado
             break;
         }
 
