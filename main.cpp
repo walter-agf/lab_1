@@ -565,7 +565,16 @@ int main()
             Hacer un programa que entregue el número de billetes y monedas de cada denominación para com-
             pletar la cantidad deseada. Si por medio de los billetes y monedas disponibles no se puede lograr la
             cantidad deseada, el sistema deberá decir lo que resta para lograrla.*/
-            cout << "Que haces \n ";
+            cout << "Ingrese una cantidad monetaria $ y averigue como se lo devuelve el cajero\n\n --> $ ";
+            cin >> a; cout << "\n\n";
+            int vec[10] = {50000,20000,10000,5000,2000,1000,500,200,100,50};
+            while (a > 50){
+                num_n =  a / vec[B];
+                cout << " " << vec[B] << " = " << num_n << "\n";
+                if (num_n != 0) a = a - (vec[B] * num_n);
+                B++;
+            }
+            cout << "\nRestante = " << a;
             break;
         }
 
@@ -604,7 +613,34 @@ int main()
             ración de la misma manera, por lo que 345 representa tres horas y 45 minutos. El programa debe
             sumar esta duración primer número, y el resultado será impreso en la misma notación, en este caso
             1630, que es el tiempo de 3 horas y 45 minutos después de 12:45.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingrese dos horas en formato cuatro digitos (1234) = 12:34 HH, y se sumaran la duracion de ambas horas\n\n";
+            cout << "A --> "; cin >> A; cout << "\n\n";
+            cout << "B --> "; cin >> B; cout << "\n\n";
+            ente = A%100; //separamos los minutos de la hora dada
+            num_n = B%100;
+            A /= 100; // separamos la hora del numero dado
+            B /= 100;
+            if (A > 23 || A < 0) cout << "Primera hora invalidad";
+            else if (B > 23 || B < 0) cout << "Segunda hora invalidad";
+            else if (ente > 60 || ente < 0) cout << "minuteros de la primera hora invalidad";
+            else if (num_n > 60 || ente < 0) cout << "minutero de la segunda hora invalida hora invalidad";
+            else { // se verifico que la hora si fuera posible
+                cout << "\t" << A << " : " << ente << "     + \t" << B << " : " << num_n << "\n\n"; //imprimimos la hora
+                cout << "La hora registrada es ";
+                A += B; // sacamos la suma de la hora
+                if (A > 23) { // si es ta supero las 24 horas se tomara como un dia
+                    A -= 23; // se ajusta la hora
+                    ava = false; //verificador de un dia
+                }
+                ente += num_n;
+                if (ente > 60 ) { // se suma los minutos si estos superan los 60m de una hora se agrega otra hora al horario
+                    A++;
+                    ente -= 60; // se ajustan los minutos
+                }
+                if (A == 24) cout << "de 2 dia + 00:"<<ente; // si al agregar la otra hora ya da dos dias se avaisa
+                else if ( ava == false ) cout << "de 1 dia + "<< A <<":"<<ente; // si no da dos dias pero si uno se imprime un dai y la hora correspondiete
+                else cout << A << ":" << ente; // se imprime la hora
+            }
             break;
         }
 
