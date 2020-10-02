@@ -2,6 +2,7 @@
 //#include <math.h>
 #include <stdlib.h>
 #include <time.h>
+//#include <iomanip>
 
 using namespace std;
 
@@ -681,8 +682,22 @@ int main()
             /*Escriba un programa que encuentre el valor aproximado del número de euler en base
             a la siguiente suma innita:
 
+            e = 1/0! + 1/1! + 1/2! + 1/3! + 1/4! + 1/5! + ...
+
             El usuario debe ingresar el número de elementos usados en la aproximación.*/
-            cout << "Valor sin sentido \n";
+            cout << "Ingres el numero de elementos para realizar la aproximacion de euler con base en la sigueinte ecuacion\n\n";
+            cout << "e = 1/0! + 1/1! + 1/2! + 1/3! + 1/4! + 1/5! + ...\n\n";
+            cout << " num -- > "; cin >> num_n ; cout << "\n\n\n";
+            A = 0; // es el multiplciado numero del cual averiguremos su factor
+            b = 1; // facto par la divicion de la ecuacion
+            a = 1; // acumulador del valor Euler
+            for(; num_n > 0 ; num_n --){
+                A++;
+                b = b * A; // se averigua el factor consiguiente
+                //cout << "\n\t" << 1/b;
+                a += 1/b;
+            }
+            cout << "\n El numeo esuler calculado es = " /* << fixed << setprecision(24) */<< a ; //por defecto se imprimer 5 decimales pero se puede ajustar la cantidad de decimales con la funcion comentada
             break;
         }
 
@@ -711,7 +726,38 @@ int main()
             /*Escriba un programa que reciba 3 números a, b, c, y calcule la suma
             de todos los múltiplos de a y b que sean menores a c. Tenga en cuenta
             no sumar 2 veces los múltiplos comunes.*/
-            cout << "Valor sin sentido \n";
+            cout << "Escriba un programa que reciba 3 numeros a, b, c, y calcule la suma\n";
+            cout << "de todos los multiplos de a y b que sean menores a c. Tenga en cuenta";
+            cout << "no sumar 2 veces los multiplos comunes.\n\n a --> ";
+            cin >> A; cout << "\n\n b --> ";
+            cin >> B; cout << "\n\n c --> ";
+            cin >> num_n; cout << "\n\n";
+            if (B > A ) { // Realiza un cambio de numero para que A siempre sea el mayor o igual a B
+                ente = A ;
+                A = B ;
+                B = ente;
+            }
+            pos = 1;
+            while (sum<num_n){
+                sum = A * pos; // averigua el multplo coforme al numero de pos en las variables
+                impar = B * pos;
+                if (impar % A == 0) impar = 0;
+                pos ++; //aumetna pos
+                if (sum < num_n ) { //solo si estenumero no supera a num_n realiza la suma y la imprecion
+                    par += sum + impar;
+                    cout << "  " << sum << "    " << impar << "\n\n";
+                }
+            }
+            while (A != B && impar < num_n ){ // si los valores son iguales no continua sumando
+                impar  = B * pos;
+                if ( impar % A == 0) impar = 0; //averigua si el numero tmabine es multiplo del mayor otro numero
+                pos ++;
+                if (impar < num_n) { //solo imprime miestras este sea menor que num_n
+                    par += impar;
+                    cout << "        " << impar << "\n\n";
+                }
+            }
+            cout << "La suma de todos los multiplos menores c = " << num_n << " es igual ha = " << par;
             break;
         }
 
