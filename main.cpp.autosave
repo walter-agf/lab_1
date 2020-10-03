@@ -828,18 +828,18 @@ int main()
             A = 1;
             while (A != num_n){
                 A++;
-                if (num_n % A == 0){
+                if (num_n % A == 0){ // pregunta si dicho numero es factor del original
                     if (A == 2 || A == 3 || A == 5 || A == 7 || A == 11 || A == 13) { // realiza las primeras 5 operaciones varias en nuemro primos
-                        if (A > B) B = A;
+                        B = A; //en caso de que sea primo, lo aumenta al anterior
                     }
                     else { // calcula los numeros primos en base a su modulo
                         if (A%2 != 0 && A%3 != 0 && A%5 != 0 && A%7 != 0 && A%11 != 0 && A%13 != 0) {
-                            if (A > B) B = A;
+                            B = A; //En caso de que sea primo se hace la suma de una vez
                         }
                     }
                 }
             }
-            cout << "\n\nEl factor primo mayor de = " << num_n << "es = " << B;
+            cout << "\n\nEl factor primo mayor de = " << num_n << " es = " << B;
             break;
         }
 
